@@ -6,8 +6,10 @@
   <title>Movie App</title>
   <link rel="stylesheet" href="/css/font-awesome.min.css">
   @vite('resources/css/app.css')
+  @livewireStyles
 </head>
 <body class="font-sans bg-gray-900 text-white">
+
     <nav class="border-b border-gray-880">
         <div class="container mx-auto px-4 flex flex-col md:flex-row items-center justify-between px-4 py-6">
           <ul class="flex flex-col md:flex-row items-center">
@@ -28,15 +30,7 @@
             </li>
           </ul>
 
-          <div class="flex flex-col md:flex-row items-center">
-            <div class="relative mt-3 md:mt-0">
-                <input type="text" class="bg-gray-800 rounded-full w-64 px-4 py-1 focus:outline-none focus:shadow:outline  pl-8" placeholder="Search">
-                {{-- <div>
-                   <font-awesome-icon :icon="['fasr', 'magnifying-glass']" beat />
-                   <i class="fa-solid fa-copy"></i>
-                </div> --}}
-            </div>
-          </div>
+          <livewire:search-dropdown />
 
           <div class="md:ml-4 mt-3 md:mt-0">
              <a href="#">
@@ -48,5 +42,6 @@
 
     </nav>
      @yield('content')
+     @livewireScripts
 </body>
 </html>
