@@ -11,6 +11,16 @@ module.exports = {
             '96': '24rem',
         }
     },
+    spinner: (theme) => ({
+       default: {
+          color: '#dae1e7',
+          size: '1rem',
+          border: '2px',
+          speed: '500ms',
+       },
+    }),
   },
-  plugins: [],
+  plugins: [
+    require('tailwindcss-spinner')(),
+  ],
 }
