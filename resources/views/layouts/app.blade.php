@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="/css/font-awesome.min.css">
   @vite('resources/css/app.css')
   @livewireStyles
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 </head>
 <body class="font-sans bg-gray-900 text-white">
 
@@ -29,9 +30,9 @@
                 <a href="#" class="hover:text-gray-300">Actors</a>
             </li>
           </ul>
-
+          <div class="flex flex-col md:flex-row items-center">
           <livewire:search-dropdown />
-
+          </div>
           <div class="md:ml-4 mt-3 md:mt-0">
              <a href="#">
                 <img src="{{ asset('img/avatar.jpeg')}}" class="rounded-full w-8 h-8" alt="avatar">
