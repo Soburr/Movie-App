@@ -20,7 +20,8 @@ Route::get('/', 'App\Http\Controllers\MoviesController@index')->name('movie.inde
 
 Route::get('/movies/{movieId}', 'App\Http\Controllers\MoviesController@show')->name('movie.show');
 
-
 Route::get('/actors', 'App\Http\Controllers\ActorsController@index')->name('actor.index');
+
+Route::get('actors/page/{page?}', 'App\Http\Controllers\ActorsController@index');
 
 Route::get('/actors/{actorId}', 'App\Http\Controllers\ActorsController@show')->name('actor.show');
