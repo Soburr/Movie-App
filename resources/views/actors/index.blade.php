@@ -8,11 +8,11 @@
 
                 @foreach ($popularActors as $actors)
                 <div class="actor mt-8">
-                  <a href="#">
+                  <a href="{{ route('actors.show', $actors['id']) }}">
                     <img src="{{ $actors['profile_path'] }}" alt="profile image" class="hover-opacity-75 transition ease-in-out duration-150">
                   </a>
                 <div class="mt-2">
-                   <a href="#" class="text-lg hover:text-gray-300">{{ $actors['name'] }}</a>
+                   <a href="{{ route('actors.show', $actors['id']) }}" class="text-lg hover:text-gray-300">{{ $actors['name'] }}</a>
                    <div class="text-sm truncate text-gray-400">{{ $actors['known_for'] }}</div>
                 </div>
             </div>

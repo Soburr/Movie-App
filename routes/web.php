@@ -24,4 +24,4 @@ Route::get('/actors', 'App\Http\Controllers\ActorsController@index')->name('acto
 
 Route::get('actors/page/{page?}', 'App\Http\Controllers\ActorsController@index');
 
-Route::get('/actors/{actorId}', 'App\Http\Controllers\ActorsController@show')->name('actor.show');
+Route::get('/actors/{actorId}', 'App\Http\Controllers\ActorsController@show')->name('actors.show');

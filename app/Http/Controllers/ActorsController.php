@@ -25,7 +25,7 @@ class ActorsController extends Controller
             $page,
         );
 
-        return view('actors-index', $viewModel);
+        return view('actors.index', $viewModel);
     }
 
     /**
@@ -36,7 +36,7 @@ class ActorsController extends Controller
      */
     public function show($id)
     {
-        //
+       return view('actors.show');
     }
 
 }
