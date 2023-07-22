@@ -19,14 +19,44 @@
                 @endforeach
             </div>
         </div>
-        <div class="flex justify-between mt-16">
+
+        <div class="page-load-status my-8">
+          <div class="flex justify-center">
+            <div class="infinite-scroll-request spinner my-8 text-4xl">&nbsp;</div>
+          </div>
+            <p class="infinite-scroll-last">End of content</p>
+          <div class="flex justify-center">
+            <p class="infinite-scroll-error">END OF CONTENT!!!</p>
+          </div>
+        </div>
+
+        {{-- <div class="flex justify-between mt-16">
             @if ($previous)
               <a href="/actors/page/{{ $previous }}">Previous</a>
+            @else
+            <div></div>
             @endif
 
             @if ($next)
               <a href="/actors/page/{{ $next }}">Next</a>
+              @else
+              <div></div>
             @endif
-        </div>
+        </div> --}}
     </div>
+@endsection
+
+@section('scripts')
+  <script src="https://unpkg.com/infinite-scroll@4/dist/infinite-scroll.pkgd.min.js"></script>
+  <script>
+    let elem = document.querySelector('.grid');
+    let infScroll = new InfiniteScroll( elem, {
+    // options
+    path: '/actors/page/@{{#}}',
+    append: '.actor',
+    status: '.page-load-status'
+});
+
+  </script>
+
 @endsection
