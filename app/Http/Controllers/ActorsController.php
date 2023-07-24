@@ -3,16 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\ViewModels\ActorsViewModel;
+use App\ViewModels\ActorViewModel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 
 class ActorsController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index($page = 1)
     {
         $popularActors = Http::WithToken(config('services.tmdb.token'))
@@ -28,15 +24,27 @@ class ActorsController extends Controller
         return view('actors.index', $viewModel);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function show($id)
     {
-       return view('actors.show');
+        $actor = Http::WithToken(config('services.tmdb.token'))
+        ->get('https://api.themoviedb.org/3/person/'.$id)
+        ->json();
+
+        $social = Http::WithToken(config('services.tmdb.token'))
+        ->get('https://api.themoviedb.org/3/person/'.$id.'/external_ids')
+        ->json();
+
+        $credits = Http::WithToken(config('services.tmdb.token'))
+        ->get('https://api.themoviedb.org/3/person/'.$id.'/combined_credits')
+        ->json();
+
+
+        $viewModel = new ActorViewModel(
+            $actor, $social, $credits,
+        );
+
+       return view('actors.show',  $viewModel);
     }
 
 }
