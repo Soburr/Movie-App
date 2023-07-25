@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MoviesController;
 use App\Http\Controllers\ActorsController;
-
+use App\Http\Controllers\TvController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,3 +25,7 @@ Route::get('/actors', 'App\Http\Controllers\ActorsController@index')->name('acto
 Route::get('actors/page/{page?}', 'App\Http\Controllers\ActorsController@index');
 
 Route::get('/actors/{actorId}', 'App\Http\Controllers\ActorsController@show')->name('actors.show');
+
+Route::get('/tv', 'App\Http\Controllers\TvController@index')->name('tv.index');
+
+Route::get('/tv/{tvId}', 'App\Http\Controllers\TvController@show')->name('tv.show');
