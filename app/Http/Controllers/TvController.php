@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\ViewModels\SingleTvViewModel;
 use App\ViewModels\TvViewModel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
@@ -44,9 +45,16 @@ class TvController extends Controller
 
 
 
-    public function show($id)
+    public function show($tvId)
     {
-        //
+        $tvShow = Http::WithToken(config('services.tmdb.token'))
+        ->get('https://api.themoviedb.org/3/tv/' . $tvId, [
+            'append_to_response' => 'credits,images,videos',
+        ])->json();
+
+    $viewModel = new SingleTvViewModel($tvShow);
+
+        return view('tv.show', $viewModel);
     }
 
 

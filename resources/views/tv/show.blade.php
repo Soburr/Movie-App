@@ -1,34 +1,33 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="movie-info border-b border-gray-800">
+    <div class="tvShow-info border-b border-gray-800">
         <div class="container mx-auto px-4 py-16 flex flex-col md:flex-row">
-            <img src="{{ $movie['poster_path'] }}" alt="Poster" class="w-64 md:w-96">
+            <img src="{{ $tvShow['poster_path'] }}" alt="Poster" class="w-64 md:w-96">
             <div class="md:ml-24">
-                <h2 class="text-4xl font-semibold">{{ $movie['title'] }}</h2>
+                <h2 class="text-4xl font-semibold">{{ $tvShow['name'] }}</h2>
                 <div class="flex flex-wrap items text-gray-400 text-sm">
                     <i class="fa-solid fa-star"></i>
-                    <span class="ml-1">{{ $movie['vote_average']  }}</span>
+                    <span class="ml-1">{{ $tvShow['vote_average']  }}</span>
                     <span class="mx-2">|</span>
-                    <span>{{ $movie['release_date'] }}</span>
+                    <span>{{ $tvShow['first_air_date'] }}</span>
                     <span class="mx-2">|</span>
                     <span>
-                        {{ $movie['genres'] }}
+                        {{ $tvShow['genres'] }}
                     </span>
                 </div>
 
                 <p class="text-gray-300 mt-8">
-                    {{ $movie['overview'] }}
+                    {{ $tvShow['overview'] }}
                 </p>
 
                 <div class="mt-12">
                     <h4 class="text-white font-semibold">Featured Cast</h4>
                     <div class="flex mt-4">
-                        @foreach ($movie['crew'] as $crew)
-
+                        @foreach ($tvShow['created_by'] as $crew)
                                 <div class="mr-8">
                                     <div>{{ $crew['name'] }}</div>
-                                    <div class="text-sm text-gray-400">{{ $crew['job'] }}</div>
+                                    <div class="text-sm text-gray-400">Creator</div>
                                 </div>
 
                         @endforeach
@@ -36,7 +35,7 @@
                 </div>
 
                 <div x-data="{ open: false }">
-                    @if (count($movie['videos']['results']) > 0)
+                    @if (count($tvShow['videos']['results']) > 0)
                         <div class="mt-12">
                             <button @click="open = true"
                                 class="flex inline-flex items-center bg-orange-500 text-gray-900
@@ -59,7 +58,7 @@
                                     <div class="responsive-container overflow-hidden relative" style="padding-top: 56.25%">
                                         <iframe width="560" height="315"
                                             class="responsive-iframe absolute top-0 left-0 w-full h-full"
-                                            src="https://www.youtube.com/embed/{{ $movie['videos']['results'][0]['key'] }}"
+                                            src="https://www.youtube.com/embed/{{ $tvShow['videos']['results'][0]['key'] }}"
                                             style="border: 0;" allow="autoplay; encrypted-media" allowfullscreen></iframe>
                                     </div>
                                 </div>
@@ -68,18 +67,20 @@
                     </div>
                 </div>
 
+
+
             </div>
         </div>
     </div>
     {{-- END MOVIE INFO --}}
 
     {{-- CAST --}}
-    <div class="movie-cast border-b border-gray-800">
+    <div class="tv-cast border-b border-gray-800">
         <div class="container mx-auto px-4 py-16">
             <h2 class="text-4xl font-semibold">Cast</h2>
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-16">
 
-                @foreach ($movie['cast'] as $cast)
+                @foreach ($tvShow['cast'] as $cast)
 
                         <div class="mt-8">
                             <a href="{{ route('actors.show', $cast['id']) }}">
@@ -101,11 +102,11 @@
 
     {{-- IMAGES --}}
 
-    <div class="movie-images" x-data="{ open: false, image: '' }">
+    <div class="tv-images" x-data="{ open: false, image: '' }">
         <div class="container mx-auto px-4 py-16">
             <h2 class="text-4xl font-semibold">Images</h2>
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-16">
-                @foreach ($movie['images'] as $image)
+                @foreach ($tvShow['images'] as $image)
 
                         <div class="mt-8">
                             <a @click.prevent="
