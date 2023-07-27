@@ -2,9 +2,9 @@
 
 @section('content')
     <div class="movie-info border-b border-gray-800">
-        <div class="container mx-auto px-4 py-16 flex flex-col md:flex-row">
+        <div class="container mx-auto px-20 py-16 flex flex-col md:flex-row">
             <div class="flex-none">
-                <img src="{{ $actor['profile_path'] }}" alt="Poster" class="w-64 md:w-76">
+                <img src="{{ $actor['profile_path'] }}" alt="Poster" class="w-64 md:w-96">
                 <ul class="flex items-center mt-4">
                     @if ($social['instagram'])
                         <li>

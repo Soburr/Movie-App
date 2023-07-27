@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="movie-info border-b border-gray-800">
-        <div class="container mx-auto px-4 py-16 flex flex-col md:flex-row">
+        <div class="container mx-auto px-20 py-16 flex flex-col md:flex-row">
             <img src="{{ $movie['poster_path'] }}" alt="Poster" class="w-64 md:w-96">
             <div class="md:ml-24">
                 <h2 class="text-4xl font-semibold">{{ $movie['title'] }}</h2>
@@ -75,7 +75,7 @@
 
     {{-- CAST --}}
     <div class="movie-cast border-b border-gray-800">
-        <div class="container mx-auto px-4 py-16">
+        <div class="container mx-auto px-20 py-16">
             <h2 class="text-4xl font-semibold">Cast</h2>
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-16">
 

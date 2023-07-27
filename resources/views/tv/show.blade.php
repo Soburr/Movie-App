@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="tvShow-info border-b border-gray-800">
-        <div class="container mx-auto px-4 py-16 flex flex-col md:flex-row">
+        <div class="container mx-auto px-20 py-16 flex flex-col md:flex-row">
             <img src="{{ $tvShow['poster_path'] }}" alt="Poster" class="w-64 md:w-96">
             <div class="md:ml-24">
                 <h2 class="text-4xl font-semibold">{{ $tvShow['name'] }}</h2>
@@ -76,7 +76,7 @@
 
     {{-- CAST --}}
     <div class="tv-cast border-b border-gray-800">
-        <div class="container mx-auto px-4 py-16">
+        <div class="container mx-auto px-20 py-16">
             <h2 class="text-4xl font-semibold">Cast</h2>
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-16">
 
